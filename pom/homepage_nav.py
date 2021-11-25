@@ -11,8 +11,13 @@ class HomepageNav(SeleniumBase):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
+        self.popup_link_close: str = '#closeButton'
         self.__nav_links: str = '#mainNavigationFobs>li'
-        self.NAV_LINK_TEXT = 'Gifts,Women,Men,Kids & Baby,Beauty,Home,Furniture,Shoes,Jewelry,Handbags & Accessories,Now Trending,Sale'
+        self.NAV_LINK_TEXT = 'Gifts,Women,Men,Kids & Baby,Beauty,Home,Furniture,Shoes,Jewelry,Handbags & Accessories,' \
+                             'Now Trending,Sale '
+
+    def close_popup_index(self):
+        self.is_visible('css', self.popup_link_close, 'Close popup link on index page').click()
 
     def get_nav_links(self) -> List[WebElement]:
         return self.are_visible('css', self.__nav_links, 'Header Navigation Links')
