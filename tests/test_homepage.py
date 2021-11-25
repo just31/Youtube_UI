@@ -9,6 +9,8 @@ class TestHomepage:
     def test_nav_links(self):
         homepage_nav = HomepageNav(self.driver)
 
+        actual_links = homepage_nav.get_nav_links_text()
+
         if homepage_nav.is_visible('css', homepage_nav.popup_link_close, 'Close popup link on index page') is not None:
             homepage_nav.close_popup_index()
 
@@ -16,4 +18,6 @@ class TestHomepage:
 
         for indx in range(number_links_header_menu):
             homepage_nav.get_nav_links()[indx].click()
+
+        assert 'Sale' in actual_links, 'Link to section - Sale, is not present on top menu'
 
