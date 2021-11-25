@@ -16,7 +16,7 @@ class HomepageNav(SeleniumBase):
         self.NAV_LINK_TEXT = 'Gifts,Women,Men,Kids & Baby,Beauty,Home,Furniture,Shoes,Jewelry,Handbags & Accessories,' \
                              'Now Trending,Sale '
 
-    def close_popup_index(self):
+    def close_popup_index(self) -> None:
         self.is_visible('css', self.popup_link_close, 'Close popup link on index page').click()
 
     def get_nav_links(self) -> List[WebElement]:
